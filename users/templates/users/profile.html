@@ -1,0 +1,56 @@
+{% extends "fyp/base.html" %}
+{% load crispy_forms_tags %}
+	{% block title %}
+		View Profile
+	{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Profile</h1>
+
+<hr>
+<div class="row mb-5">
+    <div class="col-md-11">
+        <div class="card" style="width: 20rem;">
+            <img src="https://www.windstream.com/getmedia/b2e4e38a-7cb6-4ca9-9544-54dfeaca6304/icon_user-circle.png.aspx?width=1520&height=980&ext=.png"
+                class="card-img-top" alt="img">
+            <div class="card-body" style="margin-bottom: -25px;">
+                
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Username: {{ user.username }}</li>
+                <li class="list-group-item">Email: {{ user.email }}</li>
+                
+                
+                <li class="list-group-item"> Balance : {{ appuser.funds }}</li>
+                <li class="list-group-item"> Phone : {{ appuser.phone }}</li>
+                <li class="list-group-item"><a href="{% url 'users:fyp-add_funds' %}"><button class="btn btn-primary btn-sm">Add Funds</button></a>
+                <a href="/view-payment/1"><button class="btn btn-primary btn-sm">View Payments</button></a></li>
+               
+            
+                <div class="container">
+                
+                    <a href="{% url 'users:fyp-edit_profile' user.pk %}"><button class="btn btn-primary btn-sm float-left mr-2"> Edit Profile</button></a>
+                
+                    <form method="POST" enctype="multipart/form-data" action="">
+                        {% csrf_token %}
+                        <button class="btn btn-info btn-sm float-left" type="submit"> Settings </button>
+                    </form>
+                </div>
+                    
+                
+            </ul>
+	 	</div>
+    </div>
+        <div class="col-md-1">
+            <div class="content-section " style="width: 350px;">
+              <img src="https://magic1017fm.com/wp-content/uploads/2019/10/payment-background-design_1212-566.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h4>Do Payment Now!</h4>
+                <p class="card-text">Customer Selfie Payment :) </p>
+              </div>
+            </div>
+        </div>  
+	
+
+</div>
+{% endblock content %}

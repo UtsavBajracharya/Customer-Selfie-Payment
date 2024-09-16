@@ -1,0 +1,70 @@
+{% extends "fyp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center">Load Funds</h1>
+
+<hr>
+<h3>Choose your Bank</h3>
+<div class="row pb-5">
+    <div class="col-md-11">
+    	<div class="card-header">
+    	<div class="dropdown">
+			  <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item">
+			    Himalayan Bank Ltd
+			  </button>
+			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			    <a class="dropdown-item" href="#">Himalayan Bank Ltd</a>
+			    <a class="dropdown-item" href="#">NIC Asia Bank Ltd</a>
+			    <a class="dropdown-item" href="#">Nepal Investment Bank Ltd</a>
+			    <a class="dropdown-item" href="#">Citizens Bank International Ltd</a>
+			    <a class="dropdown-item" href="#">Sunrise Bank Ltd</a>
+			    <a class="dropdown-item" href="#">Prime Commercial Bank Ltd</a>
+			    <a class="dropdown-item" href="#">Century Commercial Bank Ltd</a>
+			  </div> -->
+
+			  <div class="form-group">
+			        <label for="select-bank">Select Bank</label>
+			        <select id="select-bank" class="form-control" >
+			          <option>Himalayan Bank Ltd</option>
+			          <option>NIC Asia Bank Ltd</option>
+			          <option>Nepal Investment Bank Ltd</option>
+			          <option>Citizens Bank International Ltd</option>
+			          <option>Sunrise Bank Ltd</option>
+			          <option>Prime Commercial Bank Ltd</option>
+			          <option>Century Commercial Bank Ltd</option>
+			        </select>
+			      </div>
+			</div>
+			    	<form>
+			  <div class="form-group">
+			    <label for="exampleInputEmail1">Bank ID</label>
+			    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+			    <small id="emailHelp" class="form-text text-muted">We'll never share your ID with anyone else.</small>
+			  </div>
+			  <div class="form-group">
+			    <label for="exampleInputPassword1">Pin Code</label>
+			    <input type="password" class="form-control" id="exampleInputPassword1">
+			  </div>
+			  <div class="form-group form-check">
+			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+			    <label class="form-check-label" for="exampleCheck1">I accept to load fund into my account!</label>
+			  </div>
+			</form>
+		<form method="post">
+		    {% csrf_token %}
+		    <input type="text"  name="fund" placeholder="Enter Amount">
+		    <button type="submit" class=" btn btn-primary">Add Amount </button>
+		</form>
+	</div>
+	</div>
+	 <div class="col-md-1">
+            <div class="content-section " style="width: 350px;">
+              <img src="https://magic1017fm.com/wp-content/uploads/2019/10/payment-background-design_1212-566.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+              <h4>Do Payment Now!</h4>
+                <p class="card-text">Customer Selfie Payment :) </p>
+              </div>
+            </div>
+     </div>  
+</div>
+{% endblock content %}

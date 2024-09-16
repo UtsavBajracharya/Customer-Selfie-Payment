@@ -1,0 +1,67 @@
+
+{% extends "fyp/base.html" %}
+{% block content %}
+<div class="row pb-5">
+	<div class="col-md-11">
+	    <div class="card-header">
+	        <h3>Payments</h3>
+	    
+		    <div class="card-body">
+		    	{% for payment in payments %}
+					<article class="media content-section">
+				  		<div class="media-body">
+					    	<div class="article-metadata">
+					     	 	<a class="mr-2" href="#">{{ payment.payment_purpose }}</a>
+					      		<small class="text-muted">{{ payment.payment_time|date:"F d, Y" }}</small>
+					    	</div>
+					    		<h2><a class="article-title" href="#">{{ payment.payment_title }}</a></h2>
+					   	 		<p class="article-content">{{ payment.payment_amount }}</p>
+				  		</div>
+					</article>
+				{% empty %}
+					empty
+				{% endfor %}
+			</div>
+		</div>
+		  <ul class="pagination">
+	        {% if payments.has_previous %}
+	          <li class="page-item">
+	            <a class="page-link" href="/view-payment/{{ payments.previous_page_number }}" aria-label="Previous">
+	              <span aria-hidden="true">&laquo;</span>
+	              <span class="sr-only">Previous</span>
+	            </a>
+	          </li>
+	        {% endif %}
+	        {% for num in payments.paginator.page_range %}
+	          <li class="page-item {% if num == payments.number %}active{% endif %}"><a class="page-link" href="/view-payment/{{num}}">{{num}}</a></li>  
+	        {% endfor %}
+	        {% if payments.has_next %}
+	          <li class="page-item">
+	            <a class="page-link" href="/view-payment/{{ payments.next_page_number }}" aria-label="Next">
+	              <span aria-hidden="true">&raquo;</span>
+	              <span class="sr-only">Next</span>
+	            </a>
+	          </li>
+	        {% endif %}
+	      </ul>  
+	</div>
+	<div class="col-md-1">
+    <div class="content-section" style="width: 400px;">
+      <h4>Find Here</h4>
+      <p class='text-muted'>Search Services From Here...</p>
+        <form action="/view-payment/search" method="POST" class="form-inline my-2 my-lg-0">
+          {% csrf_token %}
+          <input name="q" value="" class="form-control m-0" type="search" placeholder="Search..." aria-label="Search">
+          <button class="form-control btn btn-outline-success m-0" type="submit">Search</button>
+        </form>
+    </div>
+     <div class="content-section " style="width: 400px;">
+          <img src="https://magic1017fm.com/wp-content/uploads/2019/10/payment-background-design_1212-566.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+          <h4>Do Payment Now!</h4>
+            <p class="card-text">Customer Selfie Payment :) </p>
+          </div>
+        </div>  
+  </div>
+</div>	
+{% endblock %}
