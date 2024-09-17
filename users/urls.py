@@ -11,3 +11,4 @@ urlpatterns = [
     path('edit-profile/<int:pk>/', views.edit_profile, name='fyp-edit_profile'),
     path('funds/', views.add_funds, name='fyp-add_funds'),
 ]
+
